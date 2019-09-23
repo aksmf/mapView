@@ -13,6 +13,7 @@
 		0C91205D233095B800DB9B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C91205C233095B800DB9B20 /* Assets.xcassets */; };
 		0C912060233095B800DB9B20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C91205E233095B800DB9B20 /* LaunchScreen.storyboard */; };
 		0C912069233095FE00DB9B20 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C912068233095FE00DB9B20 /* MapKit.framework */; };
+		E5DB37772338AD8F00B54E7F /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DB37762338AD8E00B54E7F /* 3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0C91205F233095B800DB9B20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C912061233095B800DB9B20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C912068233095FE00DB9B20 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E5DB37762338AD8E00B54E7F /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		0C912054233095B700DB9B20 /* 01SimpleMapView */ = {
 			isa = PBXGroup;
 			children = (
+				E5DB37762338AD8E00B54E7F /* 3.png */,
 				0C912055233095B700DB9B20 /* AppDelegate.swift */,
 				0C912057233095B700DB9B20 /* ViewController.swift */,
 				0C912059233095B700DB9B20 /* Main.storyboard */,
@@ -137,6 +140,7 @@
 				0C912060233095B800DB9B20 /* LaunchScreen.storyboard in Resources */,
 				0C91205D233095B800DB9B20 /* Assets.xcassets in Resources */,
 				0C91205B233095B700DB9B20 /* Main.storyboard in Resources */,
+				E5DB37772338AD8F00B54E7F /* 3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

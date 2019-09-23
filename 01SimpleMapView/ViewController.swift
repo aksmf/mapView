@@ -9,11 +9,15 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
+    
+    var annoArray = [MKPointAnnotation]()
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
         
         mapView.mapType = MKMapType.hybrid
@@ -23,23 +27,24 @@ class ViewController: UIViewController {
         let center = CLLocationCoordinate2D(latitude: 35.164873, longitude: 129.071415)
         
         //2)지도 반경 지정
-        let span = MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
+        //let span = MKCoordinateSpan(latitudeDelta: 300, longitudeDelta: 300)
         
         //3) 지도의 보여주는 영역인 region 만들기
         //let region = MKCoordinateRegion(center: center, span: span)
         
-        let region = MKCoordinateRegion(center: center, latitudinalMeters: 300, longitudinalMeters: 300)
+        //let region = MKCoordinateRegion(center: center, latitudinalMeters: 10, longitudinalMeters: 10)
         
         //4) MapView에 설정하기
-        mapView.setRegion(region, animated: true)
+        //mapView.setRegion(region, animated: true)
         
         //5) center에 pin 꼽기
         let anno01 = MKPointAnnotation()
         anno01.coordinate = center
         anno01.title = "DIT 동의과학대학교"
         anno01.subtitle = "나의 꿈이 자라는 곳"
+    
         //mapView.addAnnotation(anno01)
-        //annoArray.append(anno01)
+        annoArray.append(anno01)
         
         //송상현 광장 35.164419, 129.064962
         let anno02 = MKPointAnnotation()
@@ -48,7 +53,7 @@ class ViewController: UIViewController {
         anno02.title = "송상현 광장"
         anno02.subtitle = "푸른 잔디밭이 좋은곳"
         //mapView.addAnnotation(anno02)
-        //annoArray.append(anno02)
+        annoArray.append(anno02)
         
         //번개반점 35.167783, 129.070598
         let anno03 = MKPointAnnotation()
@@ -57,9 +62,19 @@ class ViewController: UIViewController {
         anno03.title = "번개반점"
         anno03.subtitle = "짜장면이 맛있는 집"
         //mapView.addAnnotation(anno03)
-        //annoArray.append(anno03)
+        annoArray.append(anno03)
         
-        mapView.showAnnotations([anno01, anno02, anno03], animated: true)
+        
+        let anno04 = MKPointAnnotation()
+        anno04.coordinate.latitude = 35.1548619
+        anno04.coordinate.longitude = 129.1308563
+        anno04.title = "수변공원"
+        anno04.subtitle = "부산 no.1 싸움터"
+        //mapView.addAnnotation(anno03)
+        annoArray.append(anno04)
+        
+        
+        mapView.showAnnotations(annoArray, animated: true)
       
     
     }
@@ -75,6 +90,28 @@ class ViewController: UIViewController {
     @IBAction func hybridMapTypeAction(_ sender: Any) {
         mapView.mapType = MKMapType.hybrid
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
+        let identifier = "RE"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier:identifier) as? MKPinAnnotationView
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+            annotationView?.pinTintColor = UIColor.blue
+            annotationView?.animatesDrop = true
+            
+            let btn = UIButton(type: .detailDisclosure)
+            annotationView?.rightCalloutAccessoryView = btn
+            let imgV = UIImageView(image: UIImage(named: "3.png"))
+            imgV.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            annotationView?.leftCalloutAccessoryView = imgV
+        } else{
+            annotationView!.annotation = annotation
+        }
+        return annotationView
+    }
+
+
+
 }
-
-
